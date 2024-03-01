@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  backend:
+    image: shelter2024/springblade-v3.2.0-backend-web
+    container_name: SpringBlade-v3.2.0-backend-web
+    depends_on:
+      - mysql
+      - redis
+    ports:
+      - "80:80"
+
+  frontend:
+    build:
+    image: shelter2024/springblade-v3.2.0-frontend-web
+    container_name: SpringBlade-v3.2.0-frontend-web
+    ports:
+      - "1888:1888"
+      
+
+  mysql:
+    image: mysql:5.6
+    container_name: SpringBlade-v3.2.0-web-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=blade
+    ports: 
+      - 3306:3306
+    
+    volumes:
+      - ./sqldata/blade-sword-mysql.sql:/docker-entrypoint-initdb.d/init.sql
+
+  redis:
+    image: redis
+    container_name: SpringBlade-v3.2.0-web-redis
+    ports:
+      - 6379:6379
