@@ -1,0 +1,15 @@
+version: '3'
+services:
+  php_web:
+    image: shelter2024/bgjcrm-v5.1.2-web  
+    container_name: BGJCRM5-v5.1.2-web
+    depends_on:
+      - mysql
+    ports:
+      - "80:80"
+  mysql:
+    image: mysql:5.7
+    container_name: BGJCRM5-v5.1.2-web-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+
