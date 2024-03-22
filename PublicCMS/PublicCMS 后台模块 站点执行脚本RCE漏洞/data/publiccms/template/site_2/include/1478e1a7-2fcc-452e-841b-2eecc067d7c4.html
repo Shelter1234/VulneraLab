@@ -1,0 +1,22 @@
+<div class="nav" data-diy="place" data-diy-id="${path}">
+	<ul class="nav_ul" data-diy="category">
+		<li><a href="${site.dynamicPath!}" data-id="home">Home</a></li>
+		<@cms.categoryList parentId=(siteAttribute.parentId_en)!''>
+			<#list page.list as a>
+				<li data-diy-item="${a.id}">
+					<a href="${a.url!}" data-id="${a.id}">${a.name}</a>
+					<#if a.childIds?has_content>
+						<@cms.categoryList parentId=a.id>
+							<ul class="subnav">
+							<#list page.list as a>
+								<li data-diy-item="${a.id}"><a href="${a.url!}">${a.name}</a></li>
+							</#list>
+							</ul>
+						</@cms.categoryList>
+					</#if>
+				</li>
+			</#list>
+		</@cms.categoryList>
+	</ul>
+</div>
+<div class="container"><img src="${site.sitePath}assets/images/t_pic.gif" align="top" alt=""/></div>
