@@ -1,0 +1,21 @@
+version: '3'
+services:
+  java_web:
+    image: shelter2024/mcms-v5.2.9-web  
+    container_name: mcms-v5.2.9-web
+    depends_on:
+      - mysql
+    ports:
+      - "8080:8080"
+
+  mysql:
+    image: mysql:5.7
+    container_name: mcms-v5.2.9-web-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mcms
+    ports: 
+      - 3306:3306
+    
+    volumes:
+      - ./mcms-5.2.9.sql:/docker-entrypoint-initdb.d/init.sql
