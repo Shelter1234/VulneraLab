@@ -1,0 +1,20 @@
+version: '3'
+services:
+  php_web:
+    image: shelter2024/weiphp-v5.0-web  
+    container_name: weiphp-web
+    depends_on:
+      - mysql
+    ports:
+      - "8000:8000"
+      - "80:80"
+  #  volumes:
+  #    - ./apache-config:/etc/apache2/sites-available
+  mysql:
+    image: mysql:5.7
+    container_name: weiphp-web-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      #- MYSQL_DATABASE=
+   # volumes:
+    #  - ./database.sql:/docker-entrypoint-initdb.d/init.sql
