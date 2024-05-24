@@ -1,0 +1,24 @@
+version: '3'
+services:
+  spring_web:
+    image: shelter2024/ruoyi-v4.6.2-web  
+    container_name: ruoyi-v4.6.2-web
+    depends_on:
+      - mysql
+    ports:
+      - "80:80"
+   # volumes:
+   #   - ./www:/var/www/html
+   # command: bash -c "chmod -R 777 /var/www/html && /usr/sbin/apache2ctl -D FOREGROUND"
+  mysql:
+    image: mysql:5.7
+    container_name: ruoyi-v4.6.2-web-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=ry
+      - MYSQL_CHARSET=utf8mb4
+    ports: 
+      - 3306:3306
+    
+    volumes:
+      - ./ry_20210210.sql:/docker-entrypoint-initdb.d/init.sql
