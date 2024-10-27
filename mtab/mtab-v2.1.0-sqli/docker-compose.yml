@@ -1,0 +1,18 @@
+version: '3'
+services:
+  php_web:
+    image: itushan/mtab:2.1.0
+    container_name: mtab-2.1.0-web
+    depends_on:
+      - mysql
+    ports:
+      - "3306:3306"
+      - "80:80"
+  mysql:
+    image: mysql:5.7
+    container_name: mtab-2.1.0-web-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mtab
+    volumes:
+      - ./install.sql:/docker-entrypoint-initdb.d/init.sql
