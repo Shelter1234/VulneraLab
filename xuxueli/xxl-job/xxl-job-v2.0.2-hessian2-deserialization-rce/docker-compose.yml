@@ -1,0 +1,22 @@
+version: '3'
+services:
+  spring_web:
+    image: shelter2024/shelter2024/xxl-job-v2.0.2-web
+    container_name: xxl-job-web
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/xxl-job?useUnicode=true&characterEncoding=utf8&useSSL=false
+    depends_on:
+      - mysql
+    ports:
+      - "8088:8088"
+
+  mysql:
+    image: mysql:5.7
+    container_name: xxl-job-web-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=xxl-job
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./tables_xxl_job.sql:/docker-entrypoint-initdb.d/init.sql
